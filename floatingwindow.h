@@ -18,10 +18,17 @@ public:
     void show();
     void hide();
 
+protected:
+    virtual bool eventFilter(QObject *obj, QEvent *event) override;
+
+signals:
+    void mainWindowVisibilityChanged(bool flag);
+
 private:
     int m_width;
     int m_height;
     QQuickView *_window;
+    bool _isDragging = false;
 };
 
 #endif // FLOATINGWINDOW_H
