@@ -19,6 +19,7 @@ qt_add_qml_module(appCalculator
     SOURCES backendhelper.h backendhelper.cpp
     SOURCES floatingwindow.h floatingwindow.cpp
     QML_FILES Helper.qml
+    QML_FILES Utilities/PrefsSpaceDelegate.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

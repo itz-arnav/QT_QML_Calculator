@@ -37,15 +37,15 @@ void FloatingWindow::hide()
 bool FloatingWindow::eventFilter(QObject *obj, QEvent *event)
 {
     Q_UNUSED(obj)
-    static QPointF _mousePosition; // Make it static if it doesn't need to be a member variable
+    static QPointF _mousePosition;
 
     switch (event->type()) {
     case QEvent::MouseButtonPress: {
         auto *evt = dynamic_cast<QMouseEvent *>(event);
-        if (evt) {                                  // Ensure evt is not nullptr
-            _mousePosition = evt->globalPosition(); // Use globalPos() for Qt 5
+        if (evt) {
+            _mousePosition = evt->globalPosition();
             QPointF relativePos = evt->pos();
-            _isDragging = (relativePos.y() < 44); // Simplify the assignment
+            _isDragging = (relativePos.y() < 44);
         }
         break;
     }
@@ -69,5 +69,5 @@ bool FloatingWindow::eventFilter(QObject *obj, QEvent *event)
     default:
         break;
     }
-    return false; // Indicate that the event should continue to be propagated
+    return false;
 }

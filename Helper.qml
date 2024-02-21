@@ -1,29 +1,42 @@
 import QtQuick
 import QtQuick.Controls
 
-Rectangle{
+import "Utilities"
+
+Rectangle {
     id: helperRoot
-    width: 300
-    height: 400
+    width: cBackendHelper.helperWidth
+    height: cBackendHelper.helperHeight
 
-    Rectangle{
-        id: backgroundRect
-        width: helperRoot.width
-        height: 120
-        color: "blue"
-        anchors.top: parent.top
+    border.color: "#fff"
+    border.width: 1
+
+    SystemPalette { id: systemPalette; colorGroup: SystemPalette.Active }
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 1
+        spacing: 10
+
+        Rectangle {
+            id: backgroundRect
+            width: parent.width
+            height: parent.height * 0.45
+            color: "blue"
+        }
+
+        PrefsSpaceDelegate {
+        }
+
+        Button {
+            id: closeHelperButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            topPadding: 10
+            bottomPadding: 10
+            leftPadding: 30
+            rightPadding: 30
+            text: "Close"
+            onClicked: cBackendHelper.hide()
+        }
     }
-
-    Button {
-        anchors.top: backgroundRect.bottom
-        anchors.horizontalCenter: helperRoot.horizontalCenter
-        topPadding: 10
-        bottomPadding: 10
-        leftPadding: 30
-        rightPadding: 30
-        text: "Close"
-
-        onClicked: cBackendHelper.hide()
-    }
-
 }

@@ -3,7 +3,9 @@
 BackendHelper::BackendHelper(QQmlApplicationEngine *engine, QObject *parent)
 {
     m_appEngine = engine;
-    m_floatingWindow = new FloatingWindow(engine, 200, 200, parent);
+    m_helperWidth = 300;
+    m_helperHeight = 400;
+    m_floatingWindow = new FloatingWindow(engine, m_helperWidth, m_helperHeight, parent);
     connect(m_floatingWindow,
             &FloatingWindow::mainWindowVisibilityChanged,
             this,
@@ -33,4 +35,30 @@ void BackendHelper::setisHelperVisible(bool newIsHelperVisible)
         return;
     m_isHelperVisible = newIsHelperVisible;
     emit isHelperVisibleChanged(m_isHelperVisible);
+}
+
+int BackendHelper::helperWidth() const
+{
+    return m_helperWidth;
+}
+
+void BackendHelper::setHelperWidth(int newHelperWidth)
+{
+    if (m_helperWidth == newHelperWidth)
+        return;
+    m_helperWidth = newHelperWidth;
+    emit helperWidthChanged();
+}
+
+int BackendHelper::helperHeight() const
+{
+    return m_helperHeight;
+}
+
+void BackendHelper::setHelperHeight(int newHelperHeight)
+{
+    if (m_helperHeight == newHelperHeight)
+        return;
+    m_helperHeight = newHelperHeight;
+    emit helperHeightChanged();
 }

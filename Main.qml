@@ -3,10 +3,10 @@ import QtQuick.Controls
 
 Window {
     id: applicationRootWindow
-    minimumWidth: 600
-    minimumHeight: 800
+    minimumWidth: 300
+    minimumHeight: 400
     visible: !isHelperVisible
-    title: qsTr("Helper Window Display")
+    title: qsTr("Helper Window Settings")
     property bool isHelperVisible: false
 
     Button{
