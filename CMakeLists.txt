@@ -20,6 +20,10 @@ qt_add_qml_module(appCalculator
     SOURCES floatingwindow.h floatingwindow.cpp
     QML_FILES Helper.qml
     QML_FILES Utilities/PrefsSpaceDelegate.qml
+    RESOURCES Images/close.svg
+    QML_FILES Utilities/FontAwesome.js
+    RESOURCES Resources.qrc
+    QML_FILES Utilities/IconButton.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
