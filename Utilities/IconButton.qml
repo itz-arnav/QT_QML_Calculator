@@ -7,8 +7,7 @@ ToolButton {
     property bool showThemeRect: false
     property string iconText: ""
     property string iconColor: ""
-    property int iconSize: 30
-    property bool isHelper: false
+    property int iconSize: 18
     property bool showPlainText: false
     property bool flatButton: parent.flatbuttons ? true : false
     property bool showOnLocked: false
@@ -16,7 +15,9 @@ ToolButton {
     property alias toolText: toolLabel
     property string tooltipText: ""
     property alias tooltipLable: tooltip
-    property string backgroundColor: "#ef3f5f"
+    property string backgroundColor: "#33333333"
+    implicitHeight: 40
+    implicitWidth: 40
 
     hoverEnabled: tooltipText
     opacity: control.pressed || !control.enabled ? 0.7 : 1.0
@@ -81,16 +82,13 @@ ToolButton {
         showThemeRect = false
     }
 
-    Component{
-        id: themeBackground
-        Rectangle {
-            id: themeRect
-            implicitWidth: showPlainText ? toolLabel.paintedWidth + 100 : 100
-            implicitHeight: 44
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: Qt.darker(backgroundColor, control.enabled && (control.checked || control.hovered) ? 1.5 : 1.0)
-            opacity: enabled ? 1 : 0.3
-            z: 99
-        }
+    Rectangle {
+        id: themeRect
+        implicitWidth: showPlainText ? toolLabel.paintedWidth + 16 : 54
+        implicitHeight: 44
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: Qt.darker(backgroundColor, control.enabled && (control.checked || control.hovered) ? 1.5 : 1.0)
+        opacity: enabled ? 1 : 0.3
+        visible: control.down || (control.enabled && (control.checked || control.showThemeRect))
     }
 }

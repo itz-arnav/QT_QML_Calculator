@@ -1,6 +1,6 @@
-import QtQuick
-import QtQuick.Controls
-
+import QtQuick 2.15
+import QtQuick.Controls.Basic 2.15
+import "Utilities"
 Window {
     id: applicationRootWindow
     minimumWidth: 300
@@ -9,15 +9,20 @@ Window {
     title: qsTr("Helper Window Settings")
     property bool isHelperVisible: false
 
-    Button{
-        id: showHelperButton
-        anchors.centerIn: parent
-        topPadding: 10
-        bottomPadding: 10
-        leftPadding: 30
-        rightPadding: 30
-        text: isHelperVisible ? "Hide Helper" : "Show Helper"
+    Rectangle{
+        id: backgroundRect
+        anchors.top: parent.top
+        width: parent.width
+        height: parent.height*0.45
+        color: "blue"
+    }
 
+    Button {
+        id: showHelperButton
+        text: isHelperVisible ? "Hide Helper" : "Show Helper"
+        anchors.top: backgroundRect.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
         onClicked: {
             if(isHelperVisible){
                 cBackendHelper.hide()
@@ -25,6 +30,12 @@ Window {
                 cBackendHelper.show()
             }
         }
+    }
+
+    PrefsButton{
+        anchors.top: showHelperButton.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Connections {

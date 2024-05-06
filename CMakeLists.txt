@@ -24,6 +24,7 @@ qt_add_qml_module(appCalculator
     QML_FILES Utilities/FontAwesome.js
     RESOURCES Resources.qrc
     QML_FILES Utilities/IconButton.qml
+    QML_FILES Utilities/PrefsButton.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

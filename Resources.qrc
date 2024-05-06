@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Images/close.svg</file>
+        <file>Utilities/PrefsButton.qml</file>
     </qresource>
 </RCC>

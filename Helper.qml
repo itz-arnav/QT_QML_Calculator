@@ -23,7 +23,7 @@ Rectangle {
             id: backgroundRect
             width: parent.width
             height: parent.height * 0.45
-            color: "blue"
+            color: Qt.rgba(Math.random(),Math.random(),Math.random(),1)
 
             IconButton{
                 anchors.top: parent.top
@@ -55,10 +55,6 @@ Rectangle {
         }
 
         PrefsSpaceDelegate {
-        }
-
-        Label{
-            text: FontAwesome.x
         }
 
     }
