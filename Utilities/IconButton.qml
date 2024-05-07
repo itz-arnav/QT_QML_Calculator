@@ -16,6 +16,8 @@ ToolButton {
     property string tooltipText: ""
     property alias tooltipLable: tooltip
     property string backgroundColor: "#33333333"
+    signal closeClicked()
+
     implicitHeight: 40
     implicitWidth: 40
 
@@ -76,11 +78,6 @@ ToolButton {
         showThemeRect = control.hovered
     }
 
-    onClicked: {
-        if(tooltip.visible)
-            tooltip.hide()
-        showThemeRect = false
-    }
 
     Rectangle {
         id: themeRect
@@ -90,5 +87,17 @@ ToolButton {
         color: Qt.darker(backgroundColor, control.enabled && (control.checked || control.hovered) ? 1.5 : 1.0)
         opacity: enabled ? 1 : 0.3
         visible: control.down || (control.enabled && (control.checked || control.showThemeRect))
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+
+        onClicked: {
+            if(tooltip.visible)
+                tooltip.hide()
+            showThemeRect = false
+            closeClicked()
+        }
     }
 }

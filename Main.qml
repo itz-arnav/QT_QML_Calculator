@@ -4,38 +4,34 @@ import "Utilities"
 Window {
     id: applicationRootWindow
     minimumWidth: 300
-    minimumHeight: 400
+    minimumHeight: 600
     visible: !isHelperVisible
-    title: qsTr("Helper Window Settings")
+    title: qsTr("Qt Calculator")
     property bool isHelperVisible: false
 
     Rectangle{
         id: backgroundRect
         anchors.top: parent.top
         width: parent.width
-        height: parent.height*0.45
-        color: "blue"
+        height: parent.height*0.35
+        color: "#202020"
     }
 
-    Button {
+    PrefsButton{
         id: showHelperButton
-        text: isHelperVisible ? "Hide Helper" : "Show Helper"
+
         anchors.top: backgroundRect.bottom
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
-        onClicked: {
+        text: isHelperVisible ? "Hide Helper" : "Show Helper"
+
+        onButtonClicked: {
             if(isHelperVisible){
                 cBackendHelper.hide()
             }else{
                 cBackendHelper.show()
             }
         }
-    }
-
-    PrefsButton{
-        anchors.top: showHelperButton.bottom
-        anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Connections {

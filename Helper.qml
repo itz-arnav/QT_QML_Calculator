@@ -32,7 +32,7 @@ Rectangle {
                 iconText: FontAwesome.tool.close
                 iconColor: systemPalette.windowText
                 tooltipText:qsTr("Close")
-                onClicked: {
+                onCloseClicked: {
                     cBackendHelper.hide()
                 }
             }
@@ -41,15 +41,13 @@ Rectangle {
         PrefsSpaceDelegate {
         }
 
-        Button {
+        PrefsButton{
             id: changeColourButton
+
             anchors.horizontalCenter: parent.horizontalCenter
-            topPadding: 10
-            bottomPadding: 10
-            leftPadding: 30
-            rightPadding: 30
             text: "Change Colour"
-            onClicked: {
+
+            onButtonClicked: {
                 backgroundRect.color = Qt.rgba(Math.random(),Math.random(),Math.random(),1)
             }
         }
