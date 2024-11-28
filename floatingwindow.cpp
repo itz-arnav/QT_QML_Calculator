@@ -24,7 +24,9 @@ void FloatingWindow::show()
     QQuickView *d = (QQuickView *) _window;
     d->setSource(QUrl(QLatin1String("qrc:/Calculator/Helper.qml")));
     d->show();
-    emit mainWindowVisibilityChanged(true);
+    d->raise(); // Bring the window to the front
+    d->requestActivate();
+    emit mainWindowVisibilityChanged(false);
 }
 
 void FloatingWindow::hide()

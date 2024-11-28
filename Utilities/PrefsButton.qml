@@ -39,7 +39,13 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: buttonRectangle.buttonClicked()
+        onClicked: {
+            buttonRectangle.buttonClicked()
+        }
+        onDoubleClicked: {
+        
+        }
+
         cursorShape: Qt.PointingHandCursor
 
         hoverEnabled: true

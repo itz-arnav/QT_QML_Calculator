@@ -1,6 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Controls.Basic 2.15
+import QtQuick
+import QtQuick.Controls
 import "Utilities"
+
 Window {
     id: applicationRootWindow
     minimumWidth: 300
@@ -14,7 +15,7 @@ Window {
         anchors.top: parent.top
         width: parent.width
         height: parent.height*0.35
-        color: "#202020"
+        color: Qt.rgba(Math.random(),Math.random(),Math.random(),1)
     }
 
     PrefsButton{
@@ -24,7 +25,7 @@ Window {
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         text: isHelperVisible ? "Hide Helper" : "Show Helper"
-
+        enabled: !isHelperVisible
         onButtonClicked: {
             if(isHelperVisible){
                 cBackendHelper.hide()
@@ -39,6 +40,11 @@ Window {
 
         function onIsHelperVisibleChanged(flag){
             isHelperVisible = flag
+            if(flag){
+                showHelperButton.enabled = false
+            }else{
+                showHelperButton.enabled = true
+            }
         }
     }
 }

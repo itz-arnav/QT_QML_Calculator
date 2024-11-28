@@ -18,6 +18,6 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
     engine.load(url);
-
+    app.setQuitOnLastWindowClosed(false);
     return app.exec();
 }
