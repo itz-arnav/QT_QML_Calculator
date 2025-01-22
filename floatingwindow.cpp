@@ -6,8 +6,8 @@ FloatingWindow::FloatingWindow(QQmlApplicationEngine *engine, int width, int hei
     m_height = height;
 
     QQuickView *d = new QQuickView(engine, nullptr);
-    d->setFlags(Qt::WindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
-                                | Qt::NoFocus));
+
+    d->setFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     d->setBaseSize(QSize(width, height));
     d->setHeight(height);
     d->setWidth(width);
